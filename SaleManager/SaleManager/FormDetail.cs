@@ -1,4 +1,5 @@
 ﻿using SaleManager.Control;
+using SaleManager.Crystal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +38,11 @@ namespace SaleManager
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-
+            FormCrystalReport frmCrystal = new FormCrystalReport(id);
+            //this.Hide();
+            frmCrystal.Show();
+            //ReportBill rpt = new ReportBill();
+            //rpt.show();
         }
     }
 }

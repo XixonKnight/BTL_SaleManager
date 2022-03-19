@@ -145,5 +145,22 @@ namespace SaleManager.Control
             return dt;
         }
 
+        public static DataTable getProductByIdBillAndDetail(string idBill)
+        {
+            DataTable ds = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataConnection connection = new DataConnection();
+            SqlConnection conn = connection.getConnection();
+            conn.Open();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "proc_get_produc_by_id_bill";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@idBill", idBill);
+            da.SelectCommand = cmd;
+            da.Fill(ds);
+            conn.Close();
+            return ds;
+        }
+
     }
 }

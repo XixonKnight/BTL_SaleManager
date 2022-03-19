@@ -1,0 +1,15 @@
+Create proc proc_get_produc_by_id_bill(@idBill nvarchar(50))
+as
+begin
+	select p.NameProduct, p.Color, p.Size, p.Quantity, p.Price, idt.IdBill, idt.Id 
+	from tblProduct p , tblInvoiceDetails idt
+	where p.Id in (select idt.IdProduct from tblInvoiceDetails idt 
+	where idt.IdBill = @idBill ) and idt.IdProduct = p.Id;
+end
+
+Create proc proc_get_bill_by_id_bill(@idBill nvarchar(50))
+as
+begin
+	select b.Biller, b.NameCustomer, b.TotalMoney, b.CreateDate, b.Id from tblBill b
+	where b.Id = @idBill
+end

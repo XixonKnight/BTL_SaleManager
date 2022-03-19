@@ -63,5 +63,22 @@ namespace SaleManager.Control
             }
             return true;
         }
+
+        public static DataTable getBillByIdBill(string guid)
+        {
+                DataTable ds = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter();
+                DataConnection connection = new DataConnection();
+                SqlConnection conn = connection.getConnection();
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "proc_get_bill_by_id_bill";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idBill", guid);
+                conn.Open();
+                da.SelectCommand = cmd;
+                da.Fill(ds);
+                conn.Close();
+                return ds;
+        }
     }
 }

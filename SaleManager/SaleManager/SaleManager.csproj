@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>SaleManager</RootNamespace>
     <AssemblyName>SaleManager</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -61,7 +62,19 @@
     <Compile Include="Control\EquipmentNeedWarrayty.cs" />
     <Compile Include="Control\Product.cs" />
     <Compile Include="Control\ReceiptSlip.cs" />
+    <Compile Include="Crystal\ReportBill.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportBill.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataConnection.cs" />
+    <Compile Include="FormCrystalReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrystalReport.Designer.cs">
+      <DependentUpon>FormCrystalReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,12 +94,32 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\BillBean.cs" />
+    <Compile Include="Model\DataBill.cs">
+      <DependentUpon>DataBill.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataBill.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataBill.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataBillInfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataBillInfo.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Model\EquipmentNeedWarraytyBean.cs" />
     <Compile Include="Model\ProductBean.cs" />
     <Compile Include="Model\ReceiptSlipBean.cs" />
     <Compile Include="Model\RepairLogBean.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Crystal\ReportBill.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportBill.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCrystalReport.resx">
+      <DependentUpon>FormCrystalReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,7 +131,30 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Model\DataBill.xsc">
+      <DependentUpon>DataBill.xsd</DependentUpon>
+    </None>
+    <None Include="Model\DataBill.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataBill.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Model\DataBill.xss">
+      <DependentUpon>DataBill.xsd</DependentUpon>
+    </None>
+    <None Include="Model\DataBillInfo.xsc">
+      <DependentUpon>DataBillInfo.xsd</DependentUpon>
+    </None>
+    <None Include="Model\DataBillInfo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataBillInfo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Model\DataBillInfo.xss">
+      <DependentUpon>DataBillInfo.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -112,8 +168,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Crystal\" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
