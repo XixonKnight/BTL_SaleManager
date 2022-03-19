@@ -1,0 +1,43 @@
+create proc proc_save_or_update_RepairLog
+(@id nvarchar(50), @nameProduct nvarchar(255), @solution nvarchar(255), @repairer nvarchar(255),
+@fixDate datetime, @repairDate datetime, @flag bit)
+as
+begin
+	if(@flag = 1)
+		begin
+			insert into tblRepairLog(Id, NameProduct, Solution, Repairer, FixDate, RepairTime)
+			values(@id, @nameProduct, @solution, @repairer, @fixDate, @repairDate)
+		end
+	else
+		begin
+			update tblRepairLog set NameProduct = @nameProduct,
+				Solution = @solution,
+				Repairer = @repairer,
+				FixDate = @fixDate,
+				RepairTime = @repairDate
+				where Id = @id
+		end
+end
+
+
+
+go 
+ALTER TABLE tblInvoiceDetails
+DROP CONSTRAINT FK_Product;
+go
+ALTER TABLE [dbo].[tblInvoiceDetails]  WITH CHECK ADD  CONSTRAINT [FK_Product] FOREIGN KEY([IdProduct])
+REFERENCES [dbo].tblProduct ([Id])
+
+
+
+go
+
+create proc proc_view_detail_bill(@id nvarchar(50))
+as
+begin
+	select b.NameCustomer, p.NameProduct, ind.Quantity, ind.TotalMoney, ind.WarraytyPeriod
+	from tblInvoiceDetails ind join tblBill b
+	on b.Id = ind.IdBill
+	join tblProduct p on p.Id = ind.IdProduct
+	where b.Id = @id
+end

@@ -1,0 +1,20 @@
+insert into tblBill(Id, Biller, NameCustomer,TotalMoney, CreateDate)
+values(N'635ed2c0-1707-424f-93ca-9ae85caffe83', N'Lê Viêt Bằng', N'Nguyễn Thị Hằng' , 200000, GETDATE()),
+(N'd2763912-cb3b-4e62-8b88-3cc57fd467a8', N'Nguyễn Văn Toàn', N'Trịnh Văn Sâm' , 123652, GETDATE()),
+(N'5f7bafc1-28f0-4c50-bc29-aa454d1aa90e', N'Lê Viêt Bằng', N'Nguyễn Khánh Linh' , 123000, GETDATE()),
+(N'a212e3bc-c2ea-45f5-9a0a-49e772b0356e', N'Trần Thị Khánh Linh', N'Bùi Thị Hiền' , 23650000, GETDATE()),
+(N'7b17cc3d-9174-4d98-93e4-cea8ba1312e6', N'Trần Thị Khánh Linh', N'Nguyễn Thị Hằng' , 2600000, GETDATE()),
+(N'1b2fb556-9af7-42f7-9c50-abc7ab4e7154', N'Lê Viêt Bằng', N'Trịnh Văn Quyết' , 20000, GETDATE()),
+(N'38792f08-c948-4059-803c-73bf4f7c8e0f', N'Lê Viêt Bằng', N'Nguyễn Minh Hòa' , 2520000, GETDATE()),
+(N'c55a5b1b-e39e-4863-adb4-395b17afb439', N'Nguyễn Văn Toàn', N'Nguyễn Thị Hằng' , 20000, GETDATE()),
+(N'580a93af-1c57-4f62-9eae-6c41ad360941', N'Lê Viêt Bằng', N'Nguyễn Thị Hằng' , 225000000, GETDATE())
+
+go
+
+insert into tblInvoiceDetails(Id, IdBill, IdProduct, Quantity, TotalMoney, WarraytyPeriod)
+values(N'c42e95ea-8957-416b-b518-e01ba60ab254',N'1b2fb556-9af7-42f7-9c50-abc7ab4e7154',N'32924878-8ac1-4ad8-b074-6c93b1c62886',10,12000,GETDATE()),
+	(N'dea5f25f-9c8f-4673-b582-f3f086e44b84',N'1b2fb556-9af7-42f7-9c50-abc7ab4e7154',N'c2ee6e0c-07f5-4d60-a934-adce0e2c97bd',12,12000,GETDATE()),
+	(N'4e643b60-33e1-40cc-a2f5-ce50b0b08f77',N'38792f08-c948-4059-803c-73bf4f7c8e0f',N'c2ee6e0c-07f5-4d60-a934-adce0e2c97bd',11,12000,GETDATE()),
+	(N'5b52895c-3127-42c7-82b4-a1627d47102f',N'5f7bafc1-28f0-4c50-bc29-aa454d1aa90e',N'fa8a0579-8c41-478d-80d4-0ca4033a93f4',10,12000,GETDATE())
+
+	
